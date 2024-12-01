@@ -5,6 +5,24 @@
 {% endblock %}
 
 {% block content %}
-  <h1>All Chai</h1>
-  <p>This is the all chai page.</p>
+
+ {% for chai in chais %}
+
+ <div class="card m-2 border border-primary " style="width: 12rem; height:21rem;">
+  <img style="width: 12rem; height:12rem;" src="{{ chai.image.url }}" alt="{{ chai.name }} class="card-img-top" >
+  <div class="card-body bg-secondary">
+    <h5 class="card-title text-light font-weight-bold">{{chai.name}}</h5>
+    <p class="card-text">{{chai.type}}</p>
+    <a href="{% url "chai_detail" chai.id %}" class="btn btn-primary">Go And SEE</a>
+  </div>
+</div>
+
+  
+ {% endfor %}
+
 {% endblock %}
+
+
+
+
+

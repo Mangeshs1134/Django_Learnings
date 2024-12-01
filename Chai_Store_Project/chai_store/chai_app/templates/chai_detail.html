@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+chai details here
+{% endblock %}
+
+{% block content %}
+    {% for chai in chai %}
+
+    <div class="d-flex-row m-1"> 
+        <img class="d-flex-row m-3" style="width: 330px;" src="{{ chai.image.url }}" alt="{{ chai.name }}">   
+
+        <div class="d-flex-row"> 
+        <h3>{{ chai.name }}</h3>
+        <h3>Varity -- {{ chai.type }}</h3>
+        <p>{{ chai.description}}</p>
+    </div>
+    </div>
+    
+    {% endfor %}
+{% endblock %}
