@@ -3,3 +3,7 @@ body {
     font-family: Arial, sans-serif;
     color: #fff;
   }
+  img{
+    width: 300px;
+    height: auto;
+  }

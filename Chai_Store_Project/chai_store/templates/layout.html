@@ -1,7 +1,8 @@
-{% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% tailwind_css %}
     Welcome to Chai Store --
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,6 @@
     <title>Chai Store</title>
 </head>
 <body>
-    <h1>Serving Best Chai</h1>
+    <h1 class="bg-slate-500 m-11 border-spacing-8 border-red-600  ">!! Serving Best Chai</h1>
 </body>
 </html>
