@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method='post'>
+    
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Search for Stores</button>
+    {% if stores %}
+    <br>    
+    <h4>Stores with selected chai variety.</h4>
+    {% for s in stores  %}
+       {{s}} <br>
+    {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}
