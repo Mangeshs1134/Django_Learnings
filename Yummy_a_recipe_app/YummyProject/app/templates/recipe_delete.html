@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3>Are you Sure ?</h3>
+    <h4>Recipe  will get deleted.</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{%url 'recipe_list'}" class="btn-secondary">Cancel</a>
+    </form>
+
+
+{% endblock %}

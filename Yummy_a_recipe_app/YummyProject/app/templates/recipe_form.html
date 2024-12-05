@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if form.instance.pk %}
+        <h3>Edit Recipe</h3>
+    {%else%}
+    <h3>Share new Recipe</h3>
+    {% endif %}
+    <form class='form' method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary m-4" type="submit">Ready To Share</button>
+       </form>
+   
+
+{% endblock %}
