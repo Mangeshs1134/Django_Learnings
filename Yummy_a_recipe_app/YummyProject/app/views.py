@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Yummy
-from .forms import RecipeForm
+from .forms import RecipeForm , UserRegistraionForm
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 
 # Create your views here.
 
@@ -48,4 +49,24 @@ def recipe_delete(request, recipe_id):
 
 def register(request):
     
+    if request.method == "POST":
+        form = UserRegistraionForm(request.POST)
+        if form.is_valid():
+            user=form.save(commit=False)
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
+            login(request, user)
+            return redirect(recipe_list)
+        # pass
+    else:
+        form = UserRegistraionForm()
+    
 
+    return render(request, 'registration/signup.html' , {"form":form,})
+
+@login_required
+def search(request):
+    query = request.GET[query]
+    # result = Yummy.objects.all()
+    # result = Yummy.objects.filter(name__icontains=query)
+    return render(request, 'search.html', )

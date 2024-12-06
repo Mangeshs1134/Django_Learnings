@@ -1,5 +1,9 @@
+body {
+}
 .body{
-    background-color: #161616;
+  /* font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  background-color: #161616;
+  font-family:'poppins', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
   }
   
@@ -8,6 +12,9 @@
 }
 .card-images{
   height: 125px;
-  width: auto;
+  /* width: auto */
+}
+#yummy-logo{
+  width: 60px;
 }
 

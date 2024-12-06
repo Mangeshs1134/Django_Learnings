@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Yummy
-        fields = ['text', 'images']
+        fields = ['recipe_name', 'text',  'images']
 
 class UserRegistraionForm(UserCreationForm):
     email= forms.EmailField()

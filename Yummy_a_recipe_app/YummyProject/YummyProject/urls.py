@@ -19,10 +19,12 @@ from django.urls import path , include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('app.urls') , name='app' ),
+    path('accounts/', include('django.contrib.auth.urls') , name='accounts' ),
     path('',views.homepage , name='homepage' ),
     # path("__reload__/", include("django_browser_reload.urls")),
 

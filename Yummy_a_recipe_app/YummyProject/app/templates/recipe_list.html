@@ -2,23 +2,24 @@
 
 {% block content %}
 
-<h3 class="text-center mt-4">Yummy - a recipe webapp</h3>
+<h3 class="text-center mt-4"><b>Yummy</b>- a recipe webapp</h3>
 
-<a href="{%url 'recipe_create'%}" class='btn btn-primary'>
-    share a recipe
+<a href="{%url 'recipe_create'%}" class='btn btn-warning'>
+  ➕ share a recipe
 </a>
 <div class="container row gap-3">
-    {% comment %} {{recipes.images.url}} {% endcomment %}
-    {% comment %} {{url 'recipe_edit' recipe.id}} {% endcomment %}
+  {% block content2 %}{% endblock %}
     {% for recipe in recipes %}
     
     <div class="card mt-4" style="width: 18rem;">
         <img src="{{recipe.images.url}}" class="card-img-top card-images m-1"  alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{recipe.user.username}}</h5>
-          <p class="card-text">{{recipe.text}}.</p>
+          <p><h6 class="card-title">{{recipe.user.username}}</h6></p>
+          <p class="card-text">{{recipe.recipe_name}}.</p>
+          {% if recipe.user == user %}
           <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-primary ml-2">Edit</a>
           <a href="{%url 'recipe_delete' recipe.id%}" class="btn btn-danger">Delete</a>
+          {% endif %}
         </div>
       </div>
     

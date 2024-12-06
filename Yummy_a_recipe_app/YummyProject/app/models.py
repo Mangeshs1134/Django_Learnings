@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 class Yummy(models.Model):
     user = models.ForeignKey(User , related_name='user', on_delete=models.CASCADE)
+    recipe_name = models.TextField(max_length=20 , null=True ,blank=True)
     text = models.TextField(max_length=235)
     # images = models.ImageField(upload_to='photos/', null=False) 
     # images = models.ImageField(upload_to='photos/', null=False) 
