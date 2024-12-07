@@ -1,27 +1,30 @@
 from django.contrib import admin
-from .models import Chai_Variety , Chai_Reviews , Certificates, Stores
-
+from .models import Yummy, RecipeLikes
 # Register your models here.
-class ChaiReviewInline(admin.TabularInline):
-    model = Chai_Reviews
-    extra = 3
 
-class ChaiVarietyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type', 'date_added')
-    inlines = [ChaiReviewInline]
+class LikeInline(admin.TabularInline):
+    model = Yummy.likes.through
+    extra = 1
 
-class StoreAdmin(admin.ModelAdmin):
-    list_display=('name', 'location' ,'get')
-    filter_horizontal = ('avail',)
+class YummyAdmin(admin.ModelAdmin):
+    list_display = ('user', 'text'[:10],'get_likes', 'recipe_name', 'created_at', 'updated_at', )
 
-class CertificateAdmin(admin.ModelAdmin):
-    list_display= ('chai' , 'certificate_num','issue_date', 'exp_date')
+    def get_likes(self, obj):
+        list = []
+        for likes in obj.likes.all():
+            list.append(likes)
+        return len(list)
+    get_likes.short_description = 'Likes'
+
+    inlines = [LikeInline]
+
+class RecipesLikesAdmin(admin.ModelAdmin):
+    list_display= ('user', 'recipe')
 
 
+admin.site.register(Yummy, YummyAdmin)
+admin.site.register(RecipeLikes, RecipesLikesAdmin)
 
 
-admin.site.register(Chai_Variety , ChaiVarietyAdmin)
-admin.site.register(Stores , StoreAdmin)
-admin.site.register(Certificates , CertificateAdmin)
+# admin.site.register(Yummy , YummyAdmin )
 
-# admin.site.register(Chai_Reviews)

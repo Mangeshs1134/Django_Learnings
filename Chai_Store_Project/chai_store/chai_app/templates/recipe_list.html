@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="text-center mt-4"><b>Yummy</b>- a recipe webapp</h3>
+
+<a href="{%url 'recipe_create'%}" class='btn btn-warning mr-4'>
+  ➕ share a recipe
+</a>
+<a href="{%url 'oldest'%}" class='btn btn-secondary'>
+  oldest
+</a>
+<a href="{%url 'list'%}" class='btn btn-secondary'>
+  newsest
+</a>
+<div class="container row gap-3">
+  {% block content2 %}{% endblock %}
+    {% for recipe in recipes %}
+    
+    <div class="card mt-4" style="width: 18rem;">
+        <img src="{{recipe.images.url}}" class="card-img-top card-images m-1"  alt="...">
+        <div class="card-body">
+          <p><h6 class="card-title">{{recipe.user.username}}</h6></p>
+          <p class="card-text">{{recipe.recipe_name}}.</p>
+          {% if recipe.user == user %}
+          <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-primary ml-2">Edit</a>
+          <a href="{%url 'recipe_delete' recipe.id%}" class="btn btn-danger">Delete</a>
+          <form action="{%url 'like_others_post' recipe.id%}">
+            <button class="btn btn-info">Like</button>
+          </form>
+          
+          
+          {% endif %}
+        </div>
+      </div>
+    
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "recipe_list.html" %}
+
+{% block homepage %}
+<a href="{%url 'list'%}" class="btn btn-secondary">Homepage</a>
+{% endblock %}
+
+{% block content2 %}
+<h3 class="mt-4">Search Results - for {{query}} </h3>
+
+{% endblock %}

@@ -1,7 +1,15 @@
 from django import forms
-from .models import Chai_Variety
+from .models import Yummy
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-class ChaiVarietyForm (forms.Form):
+class RecipeForm(forms.ModelForm):
+    class Meta:
+        model = Yummy
+        fields = ['recipe_name', 'text',  'images']
 
-    chai_variety = forms.ModelChoiceField(queryset=Chai_Variety.objects.all(), label="Select Chai Variety : ")
-    
+class UserRegistraionForm(UserCreationForm):
+    email= forms.EmailField()
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')

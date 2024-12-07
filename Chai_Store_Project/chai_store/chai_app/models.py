@@ -1,57 +1,31 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
-
+from django.conf import settings
 # Create your models here.
 
-class Chai_Variety(models.Model):
-    CHAI_TYPE_CHOICES =[
-        ("ML",'MASALA'),
-        ('EC', 'ELAICHI'),
-        ('GR' , 'GINGER'),
-        ('PL' , 'PLAIN'),
-        ('VL' , 'VANILA'),
-        ('TL' , 'TULSI'),
-    ]
-
-    name = models.CharField(max_length=20)
-    image = models.ImageField(upload_to="chai_images/")
-    date_added = models.DateTimeField(default=timezone.now)
-    description = models.TextField(default='Great Tea')
-    
-    type = models.CharField(max_length=3 , choices=CHAI_TYPE_CHOICES , default="ML")
-    # description = models.TextField(default="Great Tea")
-
-    def __str__(self):
-        return self.name
-    
-class Chai_Reviews(models.Model):
-    chai = models.ForeignKey(Chai_Variety , related_name= 'reviews', on_delete=models.CASCADE)
+class Yummy(models.Model):
     user = models.ForeignKey(User , related_name='user', on_delete=models.CASCADE)
-    rating = models.IntegerField()
-    comment = models.TextField()
-    date_added = models.DateTimeField(default=timezone.now)
+    recipe_name = models.TextField(max_length=20 , null=True ,blank=True)
+    text = models.TextField(max_length=235)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')
+    images = models.ImageField(upload_to='yummy_images/', null=False, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.User.username} reviews for {self.chai.name}"
+        return f'{self.user.username} - {self.text[:5]}'
 
-class Stores(models.Model):
-    name = models.CharField(max_length=50)
-    location = models.CharField( max_length=50)
-    avail = models.ManyToManyField(Chai_Variety , related_name= 'avail_varieties' )
+    @property
+    def view_count(self):
+        return RecipeLikes.objects.filter(recipe=self).count()
+    
+class RecipeLikes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Yummy, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
 
-    def get(self):
-        return ", ".join([str(p) for p in self.avail.all()])
-
+    class Meta :
+        unique_together = ('user', 'recipe')
+    
     def __str__(self):
-        return self.name
-
-class Certificates(models.Model):
-    certificate_num = models.IntegerField()
-    issue_date = models.DateTimeField(default=None)
-    exp_date = models.DateTimeField(default=None)
-    chai = models.OneToOneField(Chai_Variety, on_delete=models.CASCADE , related_name='certificates')
-
-    def __str__(self):
-        return f'Certificate for {self.chai.name}'
-
+        return f'{self.user.username} likes - {self.recipe.recipe_name}'
