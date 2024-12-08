@@ -1,20 +1,134 @@
-body {
-}
+
 .body{
   /* font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   background-color: #161616;
   font-family:'poppins', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
-  }
+}
+.logo > a{
+  font-size: 14px;
+}
+.logo > .yummy{
+  font-size: 17px;
+}
+#card{
+  /* border: 1px solid red; */
+  width: 47vh;
+  height: 58vh;
+}
+.img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#card-images{
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.width{
+  /* width: 50vw; */
+  /* border: 1px solid red; */
+}
+.redirect, .redirect2{
+  display: flex;
+  background-color: #23262F;
+  /* padding-top: 30px; */
+  margin: 9px;
+  width: 98vw;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+.redirect2{
+  height: 110vh;
+}
+
+.myphotodiv, .info {
+  background-color: #17191d;
+  /* border: 1px solid white; */
+  border-radius: 10px;
+}
+
+.info{
+  height: 80px;
+  border: 1px solid rgb(47, 46, 46);
+}
+.info-content{
+  /* margin-bottom: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.myphoto{
+  width: 250px;
+  height: auto;
+  border-radius: 50%;
+}
+.myname{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+.row{
+  /* border: 1px solid white; */
+}
+
+.base-btn{
+  text-decoration: none;
+  color: azure;
+  font-size: 1.75rem;
+  background-color:rgb(204, 87, 3);
+  padding: 20px;
+  border-radius: 55px;
+}
+.btn-github{
+  text-decoration: none;
+  color: azure;
+  font-size: 1rem;
+  background-color:rgb(204, 87, 3);
+  padding: 20px;
+  border-radius: 55px;
+}
+.base-btn:hover{
+  background-color: rgb(184, 79, 4);
+  border: 0.5px solid white;
+}
   
   .bg-grey-color {
   background-color: #23262F;
 }
 .card-images{
-  height: 125px;
+  background-color: aliceblue;
+  height: 160px;
   /* width: auto */
 }
 #yummy-logo{
   width: 60px;
 }
+.yummy{
+  font-size: 2.25rem;
+}
 
+/* recipe list css */
+
+#pen{
+  width: 25px;
+}
+#edit, #delete, #like, #unlike {
+  width: 25px;
+}
+#view{
+  width: 30px;
+}
+.test2{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
