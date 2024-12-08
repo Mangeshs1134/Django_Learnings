@@ -1,29 +1,78 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block Portfolio %}{% endblock %}
 {% block content %}
 
-<h3 class="text-center mt-4"><b>Yummy</b>- a recipe webapp</h3>
 
-<a href="{%url 'recipe_create'%}" class='btn btn-warning'>
-  ➕ share a recipe
+
+<a href="{%url 'recipe_create'%}" class='btn btn-primary m-4'>
+  <img id="pen" src="{%static 'images/pen.svg'%}" alt="">
+  share a recipe
+</a>
+<a href="{%url 'oldest'%}" class='btn btn-secondary mx-2'>
+  oldest
+</a>
+<a href="{%url 'list'%}" class='btn btn-secondary mx-2'>
+  newsest
+</a>
+<a href="{%url 'list'%}" class='btn btn-secondary mx-2'>
+  popular
 </a>
 <div class="container row gap-3">
   {% block content2 %}{% endblock %}
-    {% for recipe in recipes %}
-    
-    <div class="card mt-4" style="width: 18rem;">
-        <img src="{{recipe.images.url}}" class="card-img-top card-images m-1"  alt="...">
+
+  <div class="container width">
+    <div class="row">
+      {% for recipe in recipes %}
+    <div class="col-md-3 test2">
+
+
+      <div class="card mt-2" id='card'>
+        <div class="card-img-top card-images img-container">
+          
+          <img src="{{recipe.images.url}}"  id="card-images"  alt="...">
+        </div>
         <div class="card-body">
           <p><h6 class="card-title">{{recipe.user.username}}</h6></p>
           <p class="card-text">{{recipe.recipe_name}}.</p>
-          {% if recipe.user == user %}
-          <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-primary ml-2">Edit</a>
-          <a href="{%url 'recipe_delete' recipe.id%}" class="btn btn-danger">Delete</a>
-          {% endif %}
+
+          <div class="like-view d-flex">
+            <form action="{%url 'like_others_post' recipe.id%}">
+              <button class="btn btn-muted">
+                <img id="unlike" src="{%static 'images/unlike.svg'%}" alt="">
+              </button>
+            </form>
+            <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-muted ">
+              <img id="view"  src="{%static 'images/view.svg'%}" alt="">
+            </a>
+            {% if recipe.user == user %}
+            
+              
+  
+              
+                <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-muted ">
+                  <img id="edit" src="{%static 'images/edit.svg'%}" alt="">
+                </a>
+                <a href="{%url 'recipe_delete' recipe.id%}" class="btn btn-muted">
+                  <img id="delete" src="{%static 'images/delete.svg'%}" alt="">
+                </a>
+
+            {% endif %}
+          </div>
+          
         </div>
       </div>
+    </div>
+    {% if forloop.counter|divisibleby:4 %}
+                </div><div class="row">
+            {% endif %}
     
-    {% endfor %}
+    
+      {% endfor %}
+    </div>
+  </div>
+
+    
 </div>
 
 {% endblock %}
