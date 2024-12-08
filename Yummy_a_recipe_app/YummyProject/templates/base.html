@@ -13,16 +13,22 @@
     <title>{% block title %}YUMMY{% endblock %}</title>
 </head>
 <body class='body' data-bs-theme="dark">
-    <nav class="navbar navbar-dark bg-grey-color">
+    <nav class="navbar py-3 navbar-dark bg-grey-color">
         <div class="container-fluid">
-          <a class="navbar-brand mx-3" href="{%url 'list'%}">
-            <img src="{%static "images/logo.png" %}" id="yummy-logo" alt="abc">
+          <div class="logo">
+          <a class="navbar-brand mx-3 yummy" href="{%url 'list'%}">
+            
+            <b >Yummy</b>
           </a>
-          <form class="d-flex" method='get' action="/serach">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='query' id="search">
-            <button class="btn btn-outline-success mx-2" type="submit">Search</button>
-          </form>
-          <div class="d-flex">
+        <a href="" class="navbar-brand">My Portfolio</a>
+        <a href="" class="navbar-brand">LinkedIn</a>
+        <a href="" class="navbar-brand">Github</a>
+        </div>
+        <div class="d-flex">
+            <form class="d-flex" method='get' action="{%url "search" %}">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='query' id="search">
+              <button class="btn btn-success mx-2" type="submit">Search</button>
+            </form>
             {% block homepage %}{% endblock %}
             {% if user.is_authenticated %}
             {% else %}
@@ -48,19 +54,129 @@
       </nav>
 
     
+      {% block Portfolio %}
+      
+      <div class="redirect">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              One of three columns
+            </div>
+            <div class="col-6">
+              <a class='base-btn' href="{% url 'list' %}">
+                Recipes are waiting for you 
+                        </a>
+            </div>
+            <div class="col-sm">
+              One of three columns
+            </div>
+          </div>
+        </div>
+       
+      </div>
+
+      {% comment %} Portfolio {% endcomment %}
+      <div class="redirect">
+        <div class="container">
+          <div class="row">
+            <div class="col-5 m-2 p-4 myphotodiv">
+              <p>Hi, I'm Mangesh Gupta, a passionate Python developer with expertise in building efficient and scalable applications. I specialize in web development, data analysis, automation, and machine learning. With a strong foundation in problem-solving and clean code practices, I’m dedicated to delivering high-quality solutions tailored to meet client needs. Let’s collaborate and bring your ideas to life!</p>
+            </div>
+            <div class="col-6 p-4 d-flex myphotodiv">
+              <img class="myphoto" src="{% static 'images/myphoto.jpeg' %}" alt="">
+              <div class="myname mx-4">
+
+                <h2>Mangesh Gupta</h2>
+                <h4>Full Stack Developer (Python)</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+
+
+
+      
+      <div class="redirect2">
+        <div class="container">
+          <div class="my-4"><h3>Projects </h3></div>
+          <div class="col-12 ">
+            <div class="row info my-2">
+              <div class="col-4 info-content">Project 1 : </div>
+              <div class="col-6 info-content">Recipe Web App (with backend Django)
+              </div>
+              <div class="col info-content">
+                <button class="btn btn-secondary mx-4">Visit</button>
+              </div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Project 2 : </div>
+              <div class="col-6 info-content">Spotify Clone (with Vanila JavaScript)</div>
+              <div class="col info-content">
+                <button class="btn btn-secondary mx-4">Visit</button>
+              </div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Project 3 : </div>
+              <div class="col-6 info-content">Clock for local time (with API handling)</div>
+              <div class="col info-content">
+                <button class="btn btn-secondary mx-4">Visit</button>
+              </div>
+            </div>
+          </div>
+             
+          
+        </div>
+      </div>
+
+
+      <div class="redirect2">
+        <div class="container">
+          <div class="my-4"><h3>My skills</h3></div>
+          <div class="col-12 ">
+            <div class="row info my-2">
+              <div class="col-4 info-content">Frontend : </div>
+              <div class="col-6 info-content">React JavaScript CSS </div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Backend : </div>
+              <div class="col-6 info-content">Django MySql </div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Proficient Languages : </div>
+              <div class="col-6 info-content">Python JavaScript C++ C</div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Version Control : </div>
+              <div class="col-6 info-content">Git, Github</div>
+            </div>
+            <div class="row info my-2">
+              <div class="col-4 info-content">Other : </div>
+              <div class="col-6 info-content">Bootstrap Tailwind</div>
+            </div>
+            
+          </div>
+             
+          
+        </div>
+      </div>
+
+      {% endblock %}
 
 
 
 
 
+
+      <div class="container test ">
+        {% block content %}
+        {% endblock %}
+      </div>
+      
 
 
     </body>
-    <div class="container test ">
-      
-        {% block content %}
-        homepage{% endblock %}
-    </div>
 
 
 
