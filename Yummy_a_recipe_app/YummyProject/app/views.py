@@ -99,5 +99,5 @@ def like_others_post(request, recipe_id):
         already_liked.delete()
     else:
         # adding a new like
-        RecipeLikes.objects.get_or_create(user= request.user , recipe= recipe)
+        RecipeLikes.objects.get_or_create(user= request.user , recipe= recipe, isLikedPost= True)
     return redirect(recipe_list)

@@ -19,7 +19,7 @@ class YummyAdmin(admin.ModelAdmin):
     inlines = [LikeInline]
 
 class RecipesLikesAdmin(admin.ModelAdmin):
-    list_display= ('user', 'recipe', 'created')
+    list_display= ('user', 'recipe', 'created', 'isLikedPost')
 
 
 admin.site.register(Yummy, YummyAdmin)
