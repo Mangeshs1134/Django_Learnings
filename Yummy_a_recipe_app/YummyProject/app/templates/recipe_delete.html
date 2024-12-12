@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block Portfolio %}{% endblock %}
 {% block content %}
-    <div class="d-flex ">
+    <div class="d-flex my-4 del-page">
 
-        <h3>Are you Sure ?</h3>
-        <h4>Recipe  will get deleted.</h4>
+        <h3 class="m-4" >Are you Sure ?</h3>
+        
+        <h4 class="m-4">Recipe  will get deleted.</h4>
         <form action="" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger m-4">Delete</button>
             {% comment %} <button class="btn btn-secondary"> {% endcomment %}
     
                 <a href="{%url 'list'%}" class="btn btn-secondary">Cancel</a>

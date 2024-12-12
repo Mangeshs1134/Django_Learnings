@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+ {% extends "base.html" %}
 {% block Portfolio %}{% endblock %}
 {% block content %}
-
+{% comment %}
     {% if form.instance.pk %}
         <h3>Edit Recipe</h3>
     {%else%}
@@ -14,4 +14,29 @@
        </form>
    
 
+ {% endcomment %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="my-4 d-flex input">
+        <div class="name d-flex mx-2">
+            <label for="id_recipe_name" class="form-label text-info m-4">Recipe Name : </label>
+           {{form.recipe_name}}
+        </div>
+        <div class="getImage mx-2">
+            <label for="id_images" class="form-label">Upload Image : </label>
+            {{ form.images }}
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="id_text" class="form-label ">Recipe : </label>
+        {{ form.text }}
+    </div>
+
+    <div class="mb-3">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
 {% endblock %}

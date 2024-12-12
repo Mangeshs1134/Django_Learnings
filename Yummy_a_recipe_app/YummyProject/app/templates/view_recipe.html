@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% for item in recipe %}
+<div class="recipe_name container my-2">
+    
+    <div class="row ">
+        <div class="row view-name">
+            {{item.recipe_name}}
+        </div>
+        <div class="row view-category mt-2">
+            <div class="col-4">Category : </div>
+            <div class="col-8">{{item.category}}</div>
+        </div>
+        <div class="row view-content mt-2">
+            <div class="col-6">
+                {% comment %} <pre>
+                    {{item.text | linebreaks}}
+                </pre> {% endcomment %}
+                <p style="white-space: pre-wrap;">{{ item.text }}</p>
+            </div>
+            <div class="col-6 view-image">
+                <img src="{{item.images.url}}" alt="">
+            </div>
+        </div>
+       
+
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% endblock %}
+{% block Portfolio %}{% endblock %}

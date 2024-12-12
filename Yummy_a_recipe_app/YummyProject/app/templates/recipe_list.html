@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load custom_filters %}
 {% load static %}
+
 {% block Portfolio %}{% endblock %}
 {% block content %}
 
@@ -15,8 +17,23 @@
 <a href="{%url 'list'%}" class='btn btn-secondary mx-2'>
   newsest
 </a>
-<a href="{%url 'list'%}" class='btn btn-secondary mx-2'>
+<a href="{%url 'popular'%}" class='btn btn-secondary mx-2'>
   popular
+</a>
+<a href="{%url 'up_special'%}" class='btn btn-secondary mx-2'>
+  UP Special
+</a>
+<a href="{%url 'sweet'%}" class='btn btn-secondary mx-2'>
+  sweet
+</a>
+<a href="{%url 'spicy'%}" class='btn btn-secondary mx-2'>
+  spicy
+</a>
+<a href="{%url 'indo_chinease'%}" class='btn btn-secondary mx-2'>
+  indo-chinease
+</a>
+<a href="{%url 'punjabi'%}" class='btn btn-secondary mx-2'>
+  punjabi
 </a>
 <div class="container row gap-3">
   {% block content2 %}{% endblock %}
@@ -32,17 +49,31 @@
           
           <img src="{{recipe.images.url}}"  id="card-images"  alt="...">
         </div>
-        <div class="card-body">
+        <div class="card-body card-title">
           <p><h6 class="card-title">{{recipe.user.username}}</h6></p>
-          <p class="card-text">{{recipe.recipe_name}}.</p>
+          <p class="card-text">{{recipe.recipe_name}} - <span class= "category">
+            <b>{{recipe.category}}</b>
+          </span></p>
 
           <div class="like-view d-flex">
-            <form action="{%url 'like_others_post' recipe.id%}">
-              <button class="btn btn-muted">
-                <img id="unlike" src="{%static 'images/unlike.svg'%}" alt="">
-              </button>
-            </form>
-            <a href="{%url 'recipe_edit' recipe.id%}" class="btn btn-muted ">
+            <form method="post" action="{%url 'like_others_post' recipe.id%}">
+              {% csrf_token %}
+              <button method="post" class="btn btn-muted">
+                {% if user %}
+
+                {% if recipe|is_liked_by:user %}
+                <img id="like" src="{% static 'images/like.svg' %}" alt="">
+            {% else %}
+                <img id="unlike" src="{% static 'images/unlike.svg' %}" alt="">
+            {% endif %}
+                {% endif %}
+                
+        
+            {{recipe.view_count}}
+          </button>
+        </form>
+            
+            <a href="{%url 'view_recipe' recipe.id%}" class="btn btn-muted ">
               <img id="view"  src="{%static 'images/view.svg'%}" alt="">
             </a>
             {% if recipe.user == user %}
@@ -74,5 +105,7 @@
 
     
 </div>
-
+<footer class='d-flex footer'>
+  Thank you for your Visit.
+</footer>
 {% endblock %}
