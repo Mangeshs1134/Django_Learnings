@@ -5,6 +5,12 @@
   font-family:'poppins', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 }
+.footer{
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
 .logo > a{
   font-size: 14px;
 }
@@ -131,4 +137,77 @@
   justify-content: center;
   align-items: center;
 
+}
+/* recipe form */
+
+.del-page{
+  flex-direction: column;
+}
+.login-page{
+  min-height: 60vh;
+  justify-content: center;
+  align-items: center;
+}
+.button-login{
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.category{
+  height: 15px;
+  border: 1px solid whitesmoke;
+  /* margin: 10px; */
+  padding: 5px;
+  font-size: 11px;
+  background-color: #dee2e6;
+  color: black;
+  border-radius: 10px;
+} 
+
+/* view recipe */
+
+
+.view-name{
+  display: flex;
+  /* width: 200px; */
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #685063;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid rgb(83, 82, 82);
+}
+.view-category{
+  display:flex;
+  background-color: #23262F;
+  border: 1px solid rgb(83, 82, 82);
+  /* border-radius: 8px; */
+  height: 50px;
+}
+.view-category > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-style: italic; */
+  font-weight: bold;
+}
+.view-content{
+  display: flex;
+  background-color: #23262F;
+  border: 1px solid rgb(83, 82, 82);
+  border-radius: 6px;
+  max-height: 350px;
+}
+.view-image{
+  display: flex;
+  justify-content: center;
+  /* max-width: 100%; */
+  /* max-width: 50%; */
+  height: 100%;
+  /* border: 1px solid red; */
 }
