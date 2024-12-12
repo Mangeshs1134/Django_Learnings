@@ -7,7 +7,7 @@ class LikeInline(admin.TabularInline):
     extra = 1
 
 class YummyAdmin(admin.ModelAdmin):
-    list_display = ('user', 'text'[:10],'view_count', 'like_or_unlike', 'recipe_name', 'created_at', 'updated_at', )
+    list_display = ('user', 'text'[:10], 'category','view_count', 'like_or_unlike', 'recipe_name', 'created_at', 'updated_at', )
 
     def get_likes(self, obj):
         list = []
@@ -19,7 +19,7 @@ class YummyAdmin(admin.ModelAdmin):
     inlines = [LikeInline]
 
 class RecipesLikesAdmin(admin.ModelAdmin):
-    list_display= ('user', 'recipe', 'created', 'isLikedPost')
+    list_display= ('user', 'recipe',  'isLikedPost')
 
 
 admin.site.register(Yummy, YummyAdmin)
