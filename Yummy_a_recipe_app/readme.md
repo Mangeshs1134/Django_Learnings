@@ -17,7 +17,7 @@ Yummy is a Django-based web application that allows users to browse, share, and 
 
 ### 📺 Responsive Design
 - Clean, user-friendly interface built with Django templates and Bootstrap.
-- Mobile-first design to ensure compatibility across all devices.
+
 
 ---
 
@@ -142,13 +142,7 @@ Contributions are welcome! Feel free to fork this repository and submit a pull r
 3. Commit your changes and push the branch.
 4. Submit a pull request describing your changes.
 
----
 
-## 📥 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 ## 👤 Author
 
